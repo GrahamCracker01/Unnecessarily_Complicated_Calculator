@@ -1,9 +1,7 @@
 public class Addition implements CalcOp{
     private float flt1 = 0, flt2 = 0;
 
-    public Addition() {
-        Main.totalOpCount++;
-    }
+    public Addition() {}
 
     public float getFlt1() {
         return this.flt1;

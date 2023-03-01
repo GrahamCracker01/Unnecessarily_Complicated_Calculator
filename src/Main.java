@@ -4,7 +4,7 @@ public class Main {
     static Scanner scan = new Scanner(System.in);
 
     static ArrayList <CalcOp> Operations = new ArrayList<>();
-    public static int totalOpCount, loopCount;
+    public static int loopCount;
     static boolean boolStop = false;
 
 
@@ -12,6 +12,7 @@ public class Main {
         setFirstNumber();
         setSecondNumber();
         viewCheck();
+        loopCount++;
     }
 
     public static void setFirstNumber (){
@@ -42,7 +43,7 @@ public class Main {
 
     public static void rushMode() {
         do {
-            System.out.println("----------------\n1) Addition\n2) Subtraction\n3) Multiplication\n4) Division\n5) Previous calculations\n6) Slow mode\n7) Quit");
+            System.out.println("----------------\n1) Addition\n2) Subtraction\n3) Multiplication\n4) Division\n5) History\n6) Clear history\n7) Slow mode\n8) Quit");
             int intInput = Integer.parseInt(scan.nextLine());
             switch (intInput) {
                 case 1:
@@ -71,29 +72,36 @@ public class Main {
                     break;
                 case 5:
                     //view all previous operations
-                    System.out.println("\nTotal calculations: " + totalOpCount + ". List:");
+                    System.out.println("\nTotal calculations: " + loopCount + ". List:");
                     for (CalcOp operation : Operations) {
                         System.out.println(operation.toString());
                     }
                     break;
                 case 6:
+                    //clear history
+                    if (loopCount > 0) {
+                        Operations.subList(0, loopCount).clear();
+                    }
+                    loopCount = 0;
+                    System.out.println("Cleared.");
+                    break;
+                case 7:
                     //slow mode
                     return;
-                case 7:
+                case 8:
                     //quit
                     boolStop = true;
                     break;
                 default:
                     System.out.println("\nPlease select a valid option");
             }
-            loopCount++;
         }while (!boolStop);
     }
 
     public static void main(String[] args) {
 
         do {
-            System.out.println("----------------\nWhat operation would you like to perform?\n1) Addition\n2) Subtraction\n3) Multiplication\n4) Division\n5) View previous calculations\n6) In a hurry?\n7) Quit");
+            System.out.println("----------------\nWhat operation would you like to perform?\n1) Addition\n2) Subtraction\n3) Multiplication\n4) Division\n5) View previous calculations\n6) Clear history\n7) In a hurry?\n8) Quit");
             int intInput = Integer.parseInt(scan.nextLine());
                 switch (intInput) {
                     case 1:
@@ -122,23 +130,34 @@ public class Main {
                         break;
                     case 5:
                         //view all previous operations
-                        System.out.println("\nYou have made " + totalOpCount + " total calculations. Here's the a list of them all:");
+                        System.out.print("\nYou have made " + loopCount + " total calculations.");
+                        if (loopCount > 0) {
+                            System.out.print(" Here's the a list of them all:");
+                        }
+                        System.out.println("");
                         for (CalcOp operation : Operations) {
                             System.out.println(operation.toString());
                         }
                         break;
                     case 6:
+                        //clear history
+                        if (loopCount > 0) {
+                            Operations.subList(0, loopCount).clear();
+                        }
+                        loopCount = 0;
+                        System.out.println("History has been cleared.");
+                        break;
+                    case 7:
                         //rush mode
                         rushMode();
                         break;
-                    case 7:
+                    case 8:
                         //quit
                         boolStop = true;
                         break;
                     default:
                         System.out.println("\nPlease select a valid option");
                 }
-                loopCount++;
         }while (!boolStop);
     }
 }

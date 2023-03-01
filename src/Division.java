@@ -1,9 +1,7 @@
 public class Division implements CalcOp{
     private float flt1 = 0, flt2 = 0;
 
-    public Division() {
-        Main.totalOpCount++;
-    }
+    public Division() {}
 
     public float getFlt1() {
         return this.flt1;

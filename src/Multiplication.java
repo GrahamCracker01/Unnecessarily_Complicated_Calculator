@@ -1,9 +1,7 @@
 public class Multiplication implements CalcOp{
     private float flt1 = 0, flt2 = 0;
 
-    public Multiplication() {
-        Main.totalOpCount++;
-    }
+    public Multiplication() {}
 
     public float getFlt1() {
         return this.flt1;

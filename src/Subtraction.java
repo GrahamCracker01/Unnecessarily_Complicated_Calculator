@@ -1,9 +1,7 @@
 public class Subtraction implements CalcOp{
     private float flt1 = 0, flt2 = 0;
 
-    public Subtraction() {
-        Main.totalOpCount++;
-    }
+    public Subtraction() {}
 
     public float getFlt1() {
         return this.flt1;
